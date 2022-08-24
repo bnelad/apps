@@ -1,8 +1,11 @@
 
 export class MailIndex extends React.Component {
+    
     render() {
+        console.log('mail123')
+
         return (
-            <div>mail app</div>
+            <div>Mail App</div>
         )
     }
 }
