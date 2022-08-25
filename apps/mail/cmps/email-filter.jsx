@@ -2,6 +2,7 @@ export class EmailFilter extends React.Component {
 
     state = {
         filterBy: {
+            subject: '',
             vendor: '',
             minSpeed: '',
             maxSpeed: ''
@@ -36,28 +37,24 @@ export class EmailFilter extends React.Component {
         this.props.onSetFilter(this.state.filterBy)
     }
 
-
-
     render() {
-        const { vendor } = this.state.filterBy
+        const { subject } = this.state.filterBy
+        console.log('subject12:', subject)
         return <section className="email-filter">
             <form onSubmit={this.onFilter}>
-                <label htmlFor="by-vendor">Vendor :</label>
+                <label htmlFor="by-vendor">🔍</label>
                 <input
                     ref={this.inputRef}
                     type="text"
-                    placeholder="by vendor.."
+                    placeholder="Search in mail.."
                     id="by-vendor"
-                    name="vendor"
-                    value={vendor}
+                    name="subject"
+                    value={subject}
                     onChange={this.handleChange}
                 />
-
-                <button>Filter!</button>
+                <button>Filter</button>
             </form>
-
-
-            <button className="search-btn" onClick={this.goSearch}>Go Search!</button>
+            <button className="search-btn" onClick={this.goSearch}>Go Search</button>
         </section>
     }
 }

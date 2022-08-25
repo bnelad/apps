@@ -2,7 +2,7 @@ import { EmailFilter } from '../cmps/email-filter.jsx'
 import { emailService } from '../services/email.service.js'
 import { EmailList } from '../cmps/email-list.jsx'
 
-
+const { Link } = ReactRouterDOM
 export class EmailApp extends React.Component {
     
     state = {
@@ -27,14 +27,9 @@ export class EmailApp extends React.Component {
         console.log('load:')
     }
 
-
-
     onSetFilter = (filterBy) => {
-        this.setState({ filterBy }, () => {
-            this.loadEmails()
-        })
+        this.setState({ filterBy }, this.loadEmails)
     }
-
 
 
     // onSelectemail = (emailId) => {
@@ -43,30 +38,31 @@ export class EmailApp extends React.Component {
     // }
 
 
-    // onRemoveemail = (emailId) => {
-    //     console.log('emailId from remove email', emailId);
-    //     emailService.remove(emailId)
-    //         .then(() => {
-    //             const emails = this.state.emails.filter(email => email.id !== emailId)
-    //             this.setState({ emails, selectedemail: null })
-    //         })
-    // }
+    onRemoveEmail = (emailId) => {
+        console.log('emailId from remove email', emailId);
+        emailService.remove(emailId)
+            .then(() => {
+                const emails = this.state.emails.filter(email => email.id !== emailId)
+                this.setState({ emails, selectedemail: null })
+            })
+    }
     
-    // <email-list></email-list>
-
     render() {
         const { emails } = this.state
+        const { onSetFilter,  onRemoveEmail} = this
         console.log('mail123')
         console.log('emails234: ', this.state)
 
         return <section className="mail">
             {/* <div>Mail App</div> */}
 
-            {/* <EmailFilter onSetFilter={onSetFilter} /> */}
+            <Link to="/mail/edit"><button>Compose</button></Link>
 
-            <EmailList emails={emails} />
+            <EmailFilter onSetFilter={onSetFilter} />
+            {/* <EmailFilter onSetFilter={this.onSetFilter} /> */}
 
-           
+            <EmailList emails={emails} onRemoveEmail={onRemoveEmail}/>
+
         </section>
     }
 }

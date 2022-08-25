@@ -48,17 +48,7 @@ export class EmailDetails extends React.Component {
             <h3>{email.body}</h3>
             <Link to={`/mail/`}><button>Go back</button></Link>
             {/* <button>Go back</button> */}
-            <button>Delete</button>
+            {/* <button>Delete</button> */}
         </section> 
     }
 }
-
-// {
-//     id: 'e102',
-//     subject: 'Miss you!',
-//     body: 'Would love to catch up sometimes2',
-//     isRead: false,
-//     sentAt : 1551133930594,
-//     from: 'Seth Rogen',
-//     to: 'momo@momo.com'
-// },

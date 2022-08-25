@@ -27,7 +27,7 @@ const gEmails = [
     {
         id: 'e101',
         subject: 'Hello',
-        body: 'Would love to catch up sometimes1',
+        body: 'Thank you for letting me know',
         isRead: false,
         sentAt : 1551133930594,
         from: 'Jonah Hill',
@@ -36,16 +36,16 @@ const gEmails = [
     {
         id: 'e102',
         subject: 'Miss you!',
-        body: 'Would love to catch up sometimes2',
+        body: 'Would love to catch up sometimes',
         isRead: false,
         sentAt : 1551133930594,
-        from: 'Seth Rogen',
+        from: 'Edward Norton',
         to: 'momo@momo.com'
     },
     {
         id: 'e103',
         subject: 'Shalom',
-        body: 'Would love to catch up sometimes3',
+        body: 'Can you please fill out this form?',
         isRead: false,
         sentAt : 1551133930594,
         from: 'Jonah Hill',
@@ -54,7 +54,7 @@ const gEmails = [
     {
         id: 'e104',
         subject: 'Hello',
-        body: 'Would love to catch up sometimes4',
+        body: 'It was great to see you on Thursday',
         isRead: false,
         sentAt : 1551133930594,
         from: 'Seth Rogen',
@@ -63,10 +63,55 @@ const gEmails = [
     {
         id: 'e105',
         subject: 'Hi',
-        body: 'Would love to catch up sometimes5',
+        body: 'Thank you for sharing',
+        isRead: false,
+        sentAt : 1551133930594,
+        from: 'Edward Norton',
+        to: 'momo@momo.com'
+    },
+    {
+        id: 'e106',
+        subject: 'Miss you!',
+        body: 'Please let me know what you think',
+        isRead: false,
+        sentAt : 1551133930594,
+        from: 'Seth Rogen',
+        to: 'momo@momo.com'
+    },
+    {
+        id: 'e107',
+        subject: 'Hey there!',
+        body: 'I hope you had a great trip',
         isRead: false,
         sentAt : 1551133930594,
         from: 'Jonah Hill',
+        to: 'momo@momo.com'
+    },
+    {
+        id: 'e108',
+        subject: 'Miss you!',
+        body: 'Would you be available on Sunday?',
+        isRead: false,
+        sentAt : 1551133930594,
+        from: 'Edward Norton',
+        to: 'momo@momo.com'
+    },
+    {
+        id: 'e109',
+        subject: 'Hey there!',
+        body: 'See you on next week',
+        isRead: false,
+        sentAt : 1551133930594,
+        from: 'Jonah Hill',
+        to: 'momo@momo.com'
+    },
+    {
+        id: 'e110',
+        subject: 'Miss you!',
+        body: 'Thank you for everything',
+        isRead: false,
+        sentAt : 1551133930594,
+        from: 'Seth Rogen',
         to: 'momo@momo.com'
     }
 ]
@@ -78,14 +123,14 @@ const gEmails = [
 export const emailService = {
     getById,
     query,
-    // remove,
+    remove,
     // getVendors,
     // getNextemailId,
     // save
 }
 
 const KEY = 'emailsDB1'
-// var gVendors = ['audi', 'fiat', 'suzuki', 'honda', 'mazda']
+
 
 function query(filterBy) {
     console.log('query')
@@ -99,19 +144,18 @@ function query(filterBy) {
     console.log('query', gEmails)
     console.log('query', emails)
 
-    // if (filterBy) {
-    //     let { vendor, minSpeed, maxSpeed } = filterBy
-    //     if (!minSpeed) minSpeed = 0;
-    //     if (!maxSpeed) maxSpeed = Infinity
-    //     emails = emails.filter(email => (
-    //         email.vendor.includes(vendor) &&
-    //         email.speed >= minSpeed &&
-    //         email.speed <= maxSpeed
-    //     ))
-    // }
+    if (filterBy) {
+        console.log('filterBy:', filterBy)
+        let { subject } = filterBy
+        console.log('subject:', subject)
+        emails = emails.filter(email => (
+            // email.subject.includes(subject) 
+            email.subject.toUpperCase().includes(subject.toUpperCase()) 
+        ))
+        console.log('emails :', emails)
+    }
 
     return Promise.resolve(emails)
-    
 }
 
 function getById(emailId) {
@@ -128,13 +172,13 @@ function getById(emailId) {
 //     return emails[nextemailIdx].id
 // }
 
-// function remove(emailId) {
-//     // return Promise.reject('Not now!!!')
-//     let emails = _loadFromStorage()
-//     emails = emails.filter(email => email.id !== emailId)
-//     _saveToStorage(emails)
-//     return Promise.resolve()
-// }
+function remove(emailId) {
+    console.log('remove12')
+    let emails = _loadFromStorage()
+    emails = emails.filter(email => email.id !== emailId)
+    _saveToStorage(emails)
+    return Promise.resolve()
+}
 
 // function save(email) {
 //     if(email.id) return _update(email)
@@ -156,9 +200,6 @@ function getById(emailId) {
 //     return Promise.resolve(emailToUpdate)
 // }
 
-// function getVendors() {
-//     return gVendors
-// }
 
 // function _createemail(vendor, speed = utilService.getRandomIntInclusive(1, 200)) {
 //     return {
@@ -169,14 +210,7 @@ function getById(emailId) {
 //     }
 // }
 
-// {
-//     id: 'e101',
-//     subject: 'Miss you!',
-//     body: 'Would love to catch up sometimes',
-//     isRead: false,
-//     sentAt : 1551133930594,
-//     to: 'momo@momo.com'
-// }
+
 
 function _createEmail(email) {
     return {
@@ -193,7 +227,7 @@ function _createEmail(email) {
 function _createEmails() {
     console.log('emails:')
     const emails = []
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 10; i++) {
     //     const email = emails[i]
         // const vendor = gVendors[utilService.getRandomIntInclusive(0, gVendors.length - 1)]
         emails.push(_createEmail(gEmails[i]))
@@ -212,3 +246,5 @@ function _loadFromStorage() {
 }
 
 // localStorage.clear()
+
+// 🔍🔎📩📧✉️📩📫📪
