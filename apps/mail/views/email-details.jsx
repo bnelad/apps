@@ -9,21 +9,23 @@ export class EmailDetails extends React.Component {
     }
 
     componentDidMount() {
-        console.log('mail details11')
+        console.log('mail details11111')
         this.loadEmail()
         console.log('mail details22')
     }
 
     componentDidUpdate(prevProps, prevState) {
-        console.log('mail details12222')
+        console.log('mail details4444')
         if (prevProps.match.params.mailId !== this.props.match.params.mailId) {
             this.loadEmail()
         }
     }
 
     loadEmail = () => {
-        const { emailId } = this.props.match.params
-        emailService.getById(emailId)
+        const { mailId } = this.props.match.params
+        console.log('aaaa', this.props)
+        console.log('aaaaa22', mailId)
+        emailService.getById(mailId)
             .then((email) => {
                 if (!email) return this.onGoBack()
                 this.setState({ email })
@@ -41,8 +43,22 @@ export class EmailDetails extends React.Component {
         if (!email) return 
         console.log('mail details4444')
         return<section className="email-details">
-            <h3>{email.subject}</h3>
+            <h2>{email.subject}</h2>
             <h3>{email.from}</h3>
+            <h3>{email.body}</h3>
+            <Link to={`/mail/`}><button>Go back</button></Link>
+            {/* <button>Go back</button> */}
+            <button>Delete</button>
         </section> 
     }
 }
+
+// {
+//     id: 'e102',
+//     subject: 'Miss you!',
+//     body: 'Would love to catch up sometimes2',
+//     isRead: false,
+//     sentAt : 1551133930594,
+//     from: 'Seth Rogen',
+//     to: 'momo@momo.com'
+// },

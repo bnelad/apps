@@ -14,6 +14,7 @@ export class EmailPreview extends React.Component {
     onReadMail = () => {
         this.setState((prevState) => ({
         mail: { ...prevState, isRead: true }
+        <console.log('a7777')
         }))
     }
 
@@ -24,10 +25,14 @@ export class EmailPreview extends React.Component {
 
   render() {
     const { mail } = this.state
-    console.log('from:', mail)
+    console.log('from:rrrrrrr', mail)
     if (!mail) return <span></span>
+    console.log('from: after', mail)
 
+    // return <Link to={"/mail/" + mail.id}> <article>
     return <Link to={"/mail/" + mail.id}> <article onClick={this.onReadMail} className={this.getMailClass(mail)}>
+      {/* <div className="from2"> aaa </div> */}
+      
       <div className="from"> {mail.from}</div>
       <div className="subject">{mail.subject}</div>
       <div className="mail-body">{mail.body}</div>

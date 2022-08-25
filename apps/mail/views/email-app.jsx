@@ -1,3 +1,4 @@
+import { EmailFilter } from '../cmps/email-filter.jsx'
 import { emailService } from '../services/email.service.js'
 import { EmailList } from '../cmps/email-list.jsx'
 
@@ -60,6 +61,8 @@ export class EmailApp extends React.Component {
 
         return <section className="mail">
             {/* <div>Mail App</div> */}
+
+            {/* <EmailFilter onSetFilter={onSetFilter} /> */}
 
             <EmailList emails={emails} />
 
