@@ -1,4 +1,5 @@
-import { emailService } from '../services/email.service.js';
+import { emailService } from '../services/email.service.js'
+import { EmailList } from '../cmps/email-list.jsx'
 
 
 export class EmailApp extends React.Component {
@@ -21,7 +22,7 @@ export class EmailApp extends React.Component {
         console.log('load', this.state)
         emailService.query(this.state.filterBy)
             .then((emails) => this.setState({ emails }))
-        // console.log('load:', emails) problemmm
+        // console.log('load:', emails) probl
         console.log('load:')
     }
 
@@ -50,13 +51,15 @@ export class EmailApp extends React.Component {
     //         })
     // }
     
+    // <email-list></email-list>
+
     render() {
         const { emails } = this.state
         console.log('mail123')
         console.log('emails234: ', this.state)
 
-        return <section className="car-app">
-            <div>Mail App</div>
+        return <section className="mail">
+            {/* <div>Mail App</div> */}
 
             <EmailList emails={emails} />
 

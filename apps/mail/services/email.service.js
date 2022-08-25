@@ -2,10 +2,11 @@ import { storageService } from '../../../services/storage.service.js'
 
 const email = {
     id: 'e101',
-    subject: 'Miss you!',
+    subject: 'Hello',
     body: 'Would love to catch up sometimes',
     isRead: false,
     sentAt : 1551133930594,
+    from: 'Jonah Hill',
     to: 'momo@momo.com'
 }
     
@@ -25,42 +26,47 @@ const criteria = {
 const gEmails = [
     {
         id: 'e101',
-        subject: 'Miss you!',
-        body: 'Would love to catch up sometimes',
+        subject: 'Hello',
+        body: 'Would love to catch up sometimes1',
         isRead: false,
         sentAt : 1551133930594,
+        from: 'Jonah Hill',
         to: 'momo@momo.com'
     },
     {
         id: 'e102',
         subject: 'Miss you!',
-        body: 'Would love to catch up sometimes',
+        body: 'Would love to catch up sometimes2',
         isRead: false,
         sentAt : 1551133930594,
+        from: 'Seth Rogen',
         to: 'momo@momo.com'
     },
     {
         id: 'e103',
-        subject: 'Miss you!',
-        body: 'Would love to catch up sometimes',
+        subject: 'Shalom',
+        body: 'Would love to catch up sometimes3',
         isRead: false,
         sentAt : 1551133930594,
+        from: 'Jonah Hill',
         to: 'momo@momo.com'
     },
     {
         id: 'e104',
-        subject: 'Miss you!',
-        body: 'Would love to catch up sometimes',
+        subject: 'Hello',
+        body: 'Would love to catch up sometimes4',
         isRead: false,
         sentAt : 1551133930594,
+        from: 'Seth Rogen',
         to: 'momo@momo.com'
     },
     {
         id: 'e105',
-        subject: 'Miss you!',
-        body: 'Would love to catch up sometimes',
+        subject: 'Hi',
+        body: 'Would love to catch up sometimes5',
         isRead: false,
         sentAt : 1551133930594,
+        from: 'Jonah Hill',
         to: 'momo@momo.com'
     }
 ]
@@ -78,7 +84,7 @@ export const emailService = {
     // save
 }
 
-const KEY = 'emailsDB'
+const KEY = 'emailsDB1'
 // var gVendors = ['audi', 'fiat', 'suzuki', 'honda', 'mazda']
 
 function query(filterBy) {
@@ -179,6 +185,7 @@ function _createEmail(email) {
         body: email.body,
         isRead: email.isRead,
         sentAt: email.sentAt,
+        from: email.from,
         to: email.to
     }
 }
