@@ -6,6 +6,7 @@ export const utilService = {
     padNum,
     getDayName,
     getMonthName,
+    getDatePreview
 }
 
 function makeId(length = 6) {
@@ -53,10 +54,17 @@ function getDayName(date, locale) {
     return date.toLocaleDateString(locale, { weekday: 'long' })
 }
 
-
 function getMonthName(date) {
+    const newDate = new Date(date)
     const monthNames = ["January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
     ]
-    return monthNames[date.getMonth()]
+    return monthNames[newDate.getMonth()]
+}
+
+function getDatePreview(date, isShort) {
+    const dateNum = new Date(date).getDate()
+    let monthName = getMonthName(date)
+    if (isShort) monthName = monthName.substring(0, 3)
+    return monthName + ' ' + dateNum
 }

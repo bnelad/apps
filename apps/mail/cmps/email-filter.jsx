@@ -2,17 +2,13 @@ export class EmailFilter extends React.Component {
 
     state = {
         filterBy: {
-            subject: '',
-            vendor: '',
-            minSpeed: '',
-            maxSpeed: ''
-        },
+            subject: ''
+        }
     }
 
     inputRef = React.createRef()
 
     componentDidMount() {
-        // console.log('inputRef', this.inputRef);
     }
 
     handleChange = ({ target }) => {
@@ -39,7 +35,6 @@ export class EmailFilter extends React.Component {
 
     render() {
         const { subject } = this.state.filterBy
-        console.log('subject12:', subject)
         return <section className="email-filter">
             <form onSubmit={this.onFilter}>
                 <label htmlFor="by-vendor">🔍</label>
@@ -52,9 +47,7 @@ export class EmailFilter extends React.Component {
                     value={subject}
                     onChange={this.handleChange}
                 />
-                <button>Filter</button>
             </form>
-            <button className="search-btn" onClick={this.goSearch}>Go Search</button>
         </section>
     }
 }

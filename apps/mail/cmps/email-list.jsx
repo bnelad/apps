@@ -4,8 +4,8 @@ export function EmailList({ emails, onRemoveEmail }) {
 
     return <section className="mail-list">
                 {emails.map(mail => 
-                <div><EmailPreview key={mail.id} mail={mail} />
-                <button onClick={()=>onRemoveEmail(mail.id)}>X</button>
+                <div key={mail.id} className="div-email-preview"><EmailPreview mail={mail} />
+                <div className="btn-delete-div"><button className="btn-delete" onClick={()=>onRemoveEmail(mail.id)}>X</button></div>
                 </div>
                 )}
     </section>

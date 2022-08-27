@@ -1,3 +1,6 @@
+import { utilService } from "../../../services/util.service.js"
+import { emailService } from '../services/email.service.js'
+
 const { Link } = ReactRouterDOM
 
 export class EmailPreview extends React.Component {
@@ -11,31 +14,25 @@ export class EmailPreview extends React.Component {
     }
 
     onReadMail = () => {
-        this.setState((prevState) => ({
-        mail: { ...prevState, isRead: true }
-        <console.log('a7777')
-        }))
+        const { mail } = this.state
+        emailService.updateRead(mail.id)
     }
 
-    getMailClass = (mail) => {
+    getMailClass = () => {
+        const { mail } = this.state
         const mailClass = mail.isRead ? 'mail-preview read' : 'mail-preview unread'
         return mailClass
     }
 
     render() {
         const { mail } = this.state
-        console.log('from:rrrrrrr', mail)
         if (!mail) return
-        console.log('from: after', mail)
-
-        // return <Link to={"/mail/" + mail.id}> <article>
+        const sentAt = utilService.getDatePreview(mail.sentAt, true)
         return <Link to={"/mail/" + mail.id}> <article onClick={this.onReadMail} className={this.getMailClass(mail)}>
-          {/* <div className="from2"> aaa </div> */}
-        
             <div className="from"> {mail.from}</div>
             <div className="subject">{mail.subject}</div>
-            <div className="mail-body">{mail.body}</div>
-            <div className="sent-at">{mail.sentAt}</div>
+            <div className="mail-body hide-long-text">{mail.body}</div>
+            <div className="sent-at">{sentAt}</div>
         </article></Link>
     }
 }

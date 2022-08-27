@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    background-color: whitesmoke;
 }
 
 h1,
@@ -24,10 +25,147 @@ img {
 
 .mail-preview {
     display: flex;
-    border-bottom: 1px solid rgb(216, 216, 216);
+    flex-direction: column;
+    border-top: 1px solid rgb(216, 216, 216);
     padding: 0px 10px;
-    height: 45px;
     align-items: center;
     justify-content: space-between;
+    margin: auto;
+} 
+
+.mail-preview .read {
+    color:brown;
 }
 
+.mail-preview {
+    font-weight: bolder;
+}
+
+.read {
+    font-weight: normal;
+}
+
+.hide-long-text {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.email-filter {
+    margin-left: 80px;
+}
+
+.mail-list {
+    background-color: rgb(255, 255, 255);
+}
+
+.email-side-nav-bar {
+    margin-bottom: 100px;
+    margin-inline-start: 5px;
+    width: 350px;
+    height: 40px;
+    text-align: center;
+    cursor: pointer;
+    padding: 15px 3px;
+}
+
+.folder-list {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+}
+
+li {
+    padding: 10px;
+}
+
+.compose-btn {
+    background-color: rgb(165, 208, 243);
+    padding: 15px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.del {
+    display: flex;
+}
+
+.mail-body {
+    width: 200px;
+}
+
+.btn-delete-div {
+    position: relative;
+    bottom: 4px;
+    cursor: pointer;
+}
+
+.btn-delete {
+    font-size:10px;
+}
+
+.send-btn {
+    background-color: rgb(165, 208, 243);
+    padding: 15px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.go-back-btn {
+    background-color: rgb(165, 208, 243);
+    padding: 15px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.folder-item {
+    flex-direction: row;
+}
+
+@media (min-width: 800px) {
+
+    .mail-body {
+        width: auto;
+    }
+  
+    .main-content {
+        display: flex;
+        gap: 20px;
+    }
+
+    .email-side-nav-bar {
+        margin-right: 40px;
+        margin-bottom: 50px;
+        margin-inline-start: 5px;
+        width: 150px;
+        height: 40px;
+        align-items: center;
+        cursor: pointer;
+        padding: 10px 36px;
+        justify-content: space-between;   
+    }
+
+    .mail-preview {
+        display: grid;
+        grid-template-columns: 120px 120px 1fr 100px 30px;
+        gap: 30px;
+    }
+
+    .folder-list {
+        display: flex;
+        flex-direction: column;
+        margin-left: 1px;
+        margin-right: 60px;
+        margin-top: 30px;
+        margin-inline-start: 1px;
+    }
+
+    li {
+        padding: 10px;
+    }
+
+    .compose-btn {
+        margin-left: 30px;
+    }
+}
